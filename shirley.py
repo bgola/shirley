@@ -183,7 +183,7 @@ while True:
                 wrt("%s" % random.choice(molejo.split("\n")))
             elif "funk" in msg.lower():
                 wrt("%s" % random.choice(funk.split("\n")))
-            elif "piroca" in msg.lower():
+            elif "piroca" in msg.lower() or "falo" in msg.lower():
                 wrt("8%sD" % ("="*random.randint(1,40)))
             elif "xxt" in msg.lower() or "xoxota" in msg.lower():
                 img(random.choice(glob("pussy*.jpg")))
