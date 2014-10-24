@@ -175,16 +175,12 @@ while True:
         else:
             if msg.lower().startswith("qotd"):
                 wrt("%s" % (Popen(["fortune"], stdout=PIPE).stdout.read().replace("\n", " ")))
-            elif msg.lower().startswith("hora certa do pupi") or msg.lower().startswith("pupi ta chegando?"):
-                wrt(random.choice(["atrasado ...", "chegando..", "quase la..", "hm...", "que horas sao?"]))
-            elif msg.startswith("hora certa"):
-                wrt(datetime.datetime.now().strftime("%H:%M:%S"))
             elif "molej" in msg.lower():
                 wrt("%s" % random.choice(molejo.split("\n")))
             elif "funk" in msg.lower():
                 wrt("%s" % random.choice(funk.split("\n")))
-            elif "piroca" in msg.lower() or "falo" in msg.lower():
-                wrt("8%sD" % ("="*random.randint(1,40)))
+            elif re.match(".*( |^)(falo|piroca)(s| |$).*", msg.lower()):
+                wrt("8%sD" % ("="*random.randint(1,100)))
             elif "xxt" in msg.lower() or "xoxota" in msg.lower():
                 img(random.choice(glob("pussy*.jpg")))
             elif msg.lower().startswith("dia ") or msg.lower().startswith("dia!") or msg.lower().startswith("dya") or "bom dia" in msg.lower() or "bom dya" in msg.lower() or "dia!" in msg.lower():
