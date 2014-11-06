@@ -102,9 +102,9 @@ def wrt(m):
 def voice(m):
     pp = Popen(["espeak", "-vpt+f2", "'%s'" % m.replace("'", "'"), "-w", "/tmp/x.wav"], stdout=PIPE)
     pp.wait()
-    pp = Popen(["rm", "/tmp/x.mp3"])
+    pp = Popen(["rm", "-f", "/tmp/x.mp3"])
     pp.wait()
-    pp = Popen(["ffmpeg", "-i", "/tmp/x.wav", "/tmp/x.mp3"])
+    pp = Popen(["avconv", "-i", "/tmp/x.wav", "/tmp/x.mp3"])
     pp.wait()
     p.stdin.write("send_audio " + title.replace(" ", "_") + " /tmp/x.mp3\n")
 
@@ -179,7 +179,7 @@ while True:
                 wrt("%s" % random.choice(molejo.split("\n")))
             elif "funk" in msg.lower():
                 wrt("%s" % random.choice(funk.split("\n")))
-            elif re.match(".*( |^)(falo|piroca)(s| |$).*", msg.lower()):
+            elif re.match(".*( |^)(falo|piroca)(s| |\x1b|$).*", msg.lower()):
                 wrt("8%sD" % ("="*random.randint(1,100)))
             elif "xxt" in msg.lower() or "xoxota" in msg.lower():
                 img(random.choice(glob("pussy*.jpg")))
