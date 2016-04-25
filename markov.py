@@ -7,6 +7,7 @@ START = '\1'
 END = '\0'
 ansi_escape = re.compile(r'\x1b[^m]+m')
 
+
 data = {}
 data_b = {}
 def split(msg, length):
